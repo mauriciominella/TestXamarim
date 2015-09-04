@@ -1,9 +1,0 @@
-C:\Users\Mauricio\Documents\Projects\TestXamarim\UITests\bin\Debug\TestXamarim.UITests.dll
-C:\Users\Mauricio\Documents\Projects\TestXamarim\UITests\bin\Debug\TestXamarim.UITests.pdb
-C:\Users\Mauricio\Documents\Projects\TestXamarim\UITests\bin\Debug\nunit.framework.dll
-C:\Users\Mauricio\Documents\Projects\TestXamarim\UITests\bin\Debug\Xamarin.UITest.dll
-C:\Users\Mauricio\Documents\Projects\TestXamarim\UITests\bin\Debug\Xamarin.UITest.xml
-C:\Users\Mauricio\Documents\Projects\TestXamarim\UITests\bin\Debug\nunit.framework.xml
-C:\Users\Mauricio\Documents\Projects\TestXamarim\UITests\obj\Debug\TestXamarim.UITests.csprojResolveAssemblyReference.cache
-C:\Users\Mauricio\Documents\Projects\TestXamarim\UITests\obj\Debug\TestXamarim.UITests.dll
-C:\Users\Mauricio\Documents\Projects\TestXamarim\UITests\obj\Debug\TestXamarim.UITests.pdb
