@@ -6,8 +6,9 @@ namespace TestXamarim.Business
 	{
 		#region ILoginService implementation
 
-		public TestXamarim.Business.Models.LoginResult Login (string username, string password)
+		public TestXamarim.Business.Authentication.Models.LoginResult Login (string username, string password)
 		{
+			return null;
 			/*var auth = new OAuth2Authenticator (
 				clientId: "App ID from https://developers.facebook.com/apps",
 				scope: "",

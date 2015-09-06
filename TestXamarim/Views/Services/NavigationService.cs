@@ -21,6 +21,10 @@ namespace TestXamarim.Views.Services
 			await TestXamarim.App.Current.MainPage.Navigation.PushAsync (new Views.MainView ());
 		}
 
+		public async System.Threading.Tasks.Task NavigateToAddNewActivity(){
+			await TestXamarim.App.Current.MainPage.Navigation.PushAsync (new Views.AddNewActivityView ());
+		}
+
 		#endregion
 
 		public NavigationService ()

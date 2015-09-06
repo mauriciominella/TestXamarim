@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TestXamarim.Business.Models;
+using TestXamarim.Business.Authentication.Models;
 
 namespace TestXamarim.Business
 {

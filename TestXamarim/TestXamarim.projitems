@@ -27,10 +27,23 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Services\MessageService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Services\INavigationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Services\NavigationService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Business\ILoginService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Business\GoogleLoginService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Business\Model\LoginResult.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Business\FacebookLoginService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Business\Authentication\FacebookLoginService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Business\Authentication\GoogleLoginService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Business\Authentication\ILoginService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Business\Authentication\Models\LoginResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AddNewActivityView.xaml.cs">
+      <DependentUpon>AddNewActivityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddNewActivityViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repository\IRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repository\IEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repository\Activity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repository\ActivityRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ActivitiesList.xaml.cs">
+      <DependentUpon>ActivityListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Repository\RestRespositoryBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ActivityListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -38,7 +51,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Business\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Business\Model\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Business\Authentication\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Repository\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginView.xaml">
@@ -48,6 +62,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AddNewActivityView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ActivityListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

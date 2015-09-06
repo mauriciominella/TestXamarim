@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestXamarim.Business.Models
+namespace TestXamarim.Business.Authentication.Models
 {
 	public class LoginResult
 	{

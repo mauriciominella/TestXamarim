@@ -28,9 +28,14 @@ namespace TestXamarim.ViewModels
 			}
 		}
 
+		ICommand loginCommand;
 		public ICommand LoginCommand {
-			get;
-			set;
+			get {
+				return loginCommand;
+			}
+			set {
+				loginCommand = value;
+			}
 		}
 
 		ICommand registerCommand;
@@ -44,17 +49,15 @@ namespace TestXamarim.ViewModels
 		}
 
 		private readonly Services.IMessageService _messageService;
-		private readonly Services.INavigationService _navigationService;
 		private readonly Business.ILoginService _loginService;
 
-		public LoginViewModel ()
+		public LoginViewModel () : base()
 		{
 			this.LoginCommand = new Command (this.Login);
 			this.RegisterCommand = new Command (this.Register);
 
 			this._messageService = DependencyService.Get<Services.IMessageService> ();
-			this._navigationService = DependencyService.Get<Services.INavigationService> ();
-			this._navigationService = DependencyService.Get<Business.ILoginService> ();
+			this._loginService = DependencyService.Get<Business.ILoginService> ();
 		}
 
 
@@ -68,7 +71,7 @@ namespace TestXamarim.ViewModels
 		}
 
 		private void Register(){
-			this._navigationService.NavigateToRegister ();
+			base._navigationService.NavigateToRegister ();
 		}
 
 
