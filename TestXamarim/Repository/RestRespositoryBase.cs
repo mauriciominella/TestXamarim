@@ -24,73 +24,18 @@ namespace TestXamarim.Repository
 			ServiceBaseUrl = "https://desolate-headland-5520.herokuapp.com/api";
 		}
 
-		private HttpResponseMessage PostCallBack(HttpResponseMessage res){
-			string status = res.StatusCode.ToString ();
-			return null;
-		}
+		public void Post(T newEntity){
 
-		public async Task Post(T newEntity){
-
-			using (var client = new HttpClient ()) {
-				
-				client.DefaultRequestHeaders.Accept.Clear ();
-				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-				string jsonText = JsonConvert.SerializeObject (newEntity);
-				HttpResponseMessage wcfResponse = await client.PostAsync(ServiceBaseUrl + "/activity", new StringContent(jsonText, Encoding.UTF8, "application/json"))
-					.ContinueWith(t => PostCallBack(t.Result));
-				if(wcfResponse.StatusCode != HttpStatusCode.Created)
-					throw new Exception (wcfResponse.StatusCode.ToString());
-			}
-
-
-
-			//var request = new RestRequest(typeof(T).Name, Method.POST);
-			//request.Parameters.Clear ();
-			//request.RequestFormat = DataFormat.Json;
-			//request.AddHeader("Content-Type", "application/json");
-			//request.AddJsonBody (newEntity);
-			//request.AddBody(newEntity);
-
-
-			/*string jsonText = JsonConvert.SerializeObject (newEntity);
-			request.Method = Method.POST;
+			var client = new RestClient(ServiceBaseUrl);
+			var request = new RestRequest(typeof(Activity).Name.ToLower(), Method.POST);
+			request.JsonSerializer = new LowerCaseJsonSerializer ();
 			request.RequestFormat = DataFormat.Json;
-			request.AddHeader("Accept", "application/json");
-			request.AddParameter("application/json", jsonText, ParameterType.RequestBody);*/
+			request.AddJsonBody(newEntity);
 
-			//string jsonText = JsonConvert.SerializeObject (newEntity);
-			//request.AddBody (jsonText);
+			var response = client.Execute(request);
 
-			//var response = client.Execute(request);
-
-			/*if (response.StatusCode != HttpStatusCode.Created)
-				throw new Exception (response.ErrorMessage);*/
-
-			// Create an HTTP web request using the URL:
-			/*HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create (new Uri (ServiceBaseUrl + "/activity"));
-			request.ContentType = "application/json";
-			request.Method = "POST";
-
-			string jsonText = JsonConvert.SerializeObject (newEntity);
-
-			using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-			{
-
-				streamWriter.Write(jsonText);
-				streamWriter.Flush();
-				streamWriter.Close();
-			}*/
-
-
-
-			// Send the request to the server and wait for the response:
-			/*using (WebResponse response = request.GetResponse ())
-			{
-				if (response.Headers.st != HttpStatusCode.Created)
-					throw new Exception (response.ErrorMessage);
-				
-			}*/
+			if (response.StatusCode != HttpStatusCode.Created)
+				throw new Exception ("Error creating a new entity: " + response.StatusCode);
 		}
 
 	//	public async Task<T> Get(int Id){

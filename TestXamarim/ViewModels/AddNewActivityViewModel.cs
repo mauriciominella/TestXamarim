@@ -98,12 +98,21 @@ namespace TestXamarim.ViewModels
 		{
 			try {
 				this._activityRepository.Add (this.GetActivityEntity ());
+
+				this.ClearFields();
+
 				_messageService.ShowAsync ("New activity created!");
 
 				this._navigationService.NavigateToActivityList();
 			} catch (Exception ex) {
 				_messageService.ShowAsync (ex.Message);
 			}
+		}
+
+		private void ClearFields(){
+			this.Date = DateTime.Now;
+			this.Description = string.Empty;
+			this.ActivityStatusSelectedIndex = -1;
 		}
 
 		private Activity GetActivityEntity(){

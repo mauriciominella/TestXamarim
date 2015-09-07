@@ -47,6 +47,7 @@
       <DependentUpon>TestXamarim.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Business\EnumActivityType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repository\LowerCaseJsonSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
