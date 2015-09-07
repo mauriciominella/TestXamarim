@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace TestXamarim
 {
-	public class App : Application
+	public partial class App_ : Application
 	{
-		public App ()
+		public App_ ()
 		{
 			DependencyService.Register<ViewModels.Services.IMessageService, Views.Services.MessageService> ();
 			DependencyService.Register<ViewModels.Services.INavigationService, Views.Services.NavigationService> ();

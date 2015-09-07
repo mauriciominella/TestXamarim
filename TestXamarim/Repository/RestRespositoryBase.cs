@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using RestSharp;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace TestXamarim.Repository
 {
@@ -21,32 +24,72 @@ namespace TestXamarim.Repository
 			ServiceBaseUrl = "https://desolate-headland-5520.herokuapp.com/api";
 		}
 
-		public void Post(T newEntity){
+		private HttpResponseMessage PostCallBack(HttpResponseMessage res){
+			string status = res.StatusCode.ToString ();
+			return null;
+		}
 
-			var client = new RestClient(ServiceBaseUrl);
-			var request = new RestRequest(typeof(T).Name, Method.POST);
+		public async Task Post(T newEntity){
+
+			using (var client = new HttpClient ()) {
+				
+				client.DefaultRequestHeaders.Accept.Clear ();
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+				string jsonText = JsonConvert.SerializeObject (newEntity);
+				HttpResponseMessage wcfResponse = await client.PostAsync(ServiceBaseUrl + "/activity", new StringContent(jsonText, Encoding.UTF8, "application/json"))
+					.ContinueWith(t => PostCallBack(t.Result));
+				if(wcfResponse.StatusCode != HttpStatusCode.Created)
+					throw new Exception (wcfResponse.StatusCode.ToString());
+			}
+
+
+
+			//var request = new RestRequest(typeof(T).Name, Method.POST);
+			//request.Parameters.Clear ();
+			//request.RequestFormat = DataFormat.Json;
+			//request.AddHeader("Content-Type", "application/json");
+			//request.AddJsonBody (newEntity);
+			//request.AddBody(newEntity);
+
+
+			/*string jsonText = JsonConvert.SerializeObject (newEntity);
+			request.Method = Method.POST;
 			request.RequestFormat = DataFormat.Json;
-			request.AddBody(newEntity);
-			client.Execute(request);
+			request.AddHeader("Accept", "application/json");
+			request.AddParameter("application/json", jsonText, ParameterType.RequestBody);*/
+
+			//string jsonText = JsonConvert.SerializeObject (newEntity);
+			//request.AddBody (jsonText);
+
+			//var response = client.Execute(request);
+
+			/*if (response.StatusCode != HttpStatusCode.Created)
+				throw new Exception (response.ErrorMessage);*/
 
 			// Create an HTTP web request using the URL:
-			/*HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create (new Uri (ServiceBaseUrl));
-			/*request.ContentType = "application/json";
-			request.Method = "GET";
+			/*HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create (new Uri (ServiceBaseUrl + "/activity"));
+			request.ContentType = "application/json";
+			request.Method = "POST";
+
+			string jsonText = JsonConvert.SerializeObject (newEntity);
+
+			using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+			{
+
+				streamWriter.Write(jsonText);
+				streamWriter.Flush();
+				streamWriter.Close();
+			}*/
+
+
 
 			// Send the request to the server and wait for the response:
-			using (WebResponse response = await request.GetResponseAsync ())
+			/*using (WebResponse response = request.GetResponse ())
 			{
-				// Get a stream representation of the HTTP web response:
-				using (Stream stream = response.GetResponseStream ())
-				{
-					// Use this stream to build a JSON document object:
-					JsonValue jsonDoc = await Task.Run (() => JsonObject.Load (stream));
-					Console.Out.WriteLine("Response: {0}", jsonDoc.ToString ());
-
-					// Return the JSON document:
-					return jsonDoc;
-				}
+				if (response.Headers.st != HttpStatusCode.Created)
+					throw new Exception (response.ErrorMessage);
+				
 			}*/
 		}
 

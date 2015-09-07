@@ -9,7 +9,6 @@
     <Import_RootNamespace>TestXamarim</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)TestXamarim.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -44,6 +43,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Repository\RestRespositoryBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ActivityListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestXamarim.xaml.cs">
+      <DependentUpon>TestXamarim.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Business\EnumActivityType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -68,6 +71,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ActivityListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)TestXamarim.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

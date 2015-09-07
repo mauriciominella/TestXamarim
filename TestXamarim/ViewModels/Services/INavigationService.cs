@@ -9,6 +9,7 @@ namespace TestXamarim.ViewModels.Services
 		Task NavigateToRegister();
 		Task NavigateToMain();
 		Task NavigateToAddNewActivity();
+		Task NavigateToActivityList();
 	}
 }
 

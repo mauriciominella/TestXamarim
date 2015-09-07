@@ -15,9 +15,8 @@
 
 			<StackLayout Padding="0">
 				<Label Text="Status"></Label>
-				<Button Text="Positive"></Button>
-				<Button Text="Neutral"></Button>
-				<Button Text="To Improve"></Button>
+				<Picker Title="Status" x:Name="ActivityStatusPicker" VerticalOptions="CenterAndExpand" SelectedIndex="{Binding Path=ActivityStatusSelectedIndex}" >
+				</Picker>
 			</StackLayout>
 
 			<StackLayout Padding="0">

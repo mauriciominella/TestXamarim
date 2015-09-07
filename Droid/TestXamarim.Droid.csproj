@@ -67,6 +67,7 @@
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.105.2.3\lib\MonoAndroid10\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

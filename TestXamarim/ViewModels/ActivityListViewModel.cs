@@ -53,16 +53,13 @@ namespace TestXamarim.ViewModels
 		}
 
 
-		private readonly Services.IMessageService _messageService;
-
 		private readonly ActivityRepository _activityRepository;
 
 		public ActivityListViewModel ()
 		{
 			//listItemTapCommand = new Command (OnTapped);
-			//RefreshCommand = new Command (LoadActivites);
+			RefreshCommand = new Command (LoadActivites);
 			AddNewActivityCommand = new Command(NavigateToAddNewActivity);
-			this._messageService = DependencyService.Get<Services.IMessageService> ();
 
 			this._activityRepository = new ActivityRepository ();
 
