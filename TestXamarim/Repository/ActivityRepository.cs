@@ -13,7 +13,7 @@ namespace TestXamarim.Repository
 
 		public void Delete (Activity entity)
 		{
-			throw new NotImplementedException ();
+			base.Delete (entity.Id);
 		}
 
 		public void Update (Activity entity)

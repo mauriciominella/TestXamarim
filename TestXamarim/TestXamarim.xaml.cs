@@ -16,7 +16,7 @@ namespace TestXamarim
 			DependencyService.Register<Business.ILoginService, Business.GoogleLoginService> ();
 
 			// The root page of your application
-			MainPage = new NavigationPage(new TestXamarim.Views.AddNewActivityView());
+			MainPage = new NavigationPage(new TestXamarim.Views.ActivityListView());
 		}
 
 		protected override void OnStart ()

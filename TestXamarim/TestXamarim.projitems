@@ -57,6 +57,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Business\" />
     <Folder Include="$(MSBuildThisFileDirectory)Business\Authentication\" />
     <Folder Include="$(MSBuildThisFileDirectory)Repository\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Converters\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginView.xaml">

@@ -38,6 +38,18 @@ namespace TestXamarim.Repository
 				throw new Exception ("Error creating a new entity: " + response.StatusCode);
 		}
 
+		public void Delete(string id){
+
+			var client = new RestClient(ServiceBaseUrl);
+			var request = new RestRequest(typeof(Activity).Name.ToLower() + "/" + id, Method.DELETE);
+
+			var response = client.Execute(request);
+
+			if (response.StatusCode != HttpStatusCode.NoContent)
+				throw new Exception ("Error deleting entity: " + response.StatusCode);
+
+		}
+
 	//	public async Task<T> Get(int Id){
 
 		/*	var client = new RestClient(ServiceBaseUrl);
