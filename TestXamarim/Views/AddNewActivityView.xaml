@@ -1,7 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TestXamarim.Views.AddNewActivityView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TestXamarim.Views.AddNewActivityView" Title="Bravi Timeline">
 	<ContentPage.Content>
-		<StackLayout Padding="20">
+	<RelativeLayout x:Name="RootLayout" HorizontalOptions="FillAndExpand">
+		
+		<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" 
+		    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=0.45}"
+			RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=0.2}"
+		/>	
+
+		<StackLayout Padding="20"
+		    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=1}"
+			RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=1}"			
+		>
 			<StackLayout Padding="0">
 				<Label Text="Date"></Label>
 				<DatePicker Date="{Binding Date}"></DatePicker>
@@ -23,6 +33,9 @@
 					<Button Text="Cancel"  Command="{Binding CancelCommand}" BackgroundColor="#F5F5F5" TextColor="Black"></Button>
 			</StackLayout>
 
+
 		</StackLayout>
+
+	</RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>

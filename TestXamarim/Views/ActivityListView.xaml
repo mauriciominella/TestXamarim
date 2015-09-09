@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TestXamarim.Views.ActivityListView" Title="Bravi Timeline">
 	<ContentPage.Content>
-		<StackLayout>
-			<StackLayout>
+		<RelativeLayout x:Name="RootLayout">
+			<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" 
+			    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=0.45}"
+				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=0.2}"
+			/>		
+			<StackLayout
+		    	RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=1}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=1}"	
+			>
 				<ListView x:Name="myListView" ItemsSource="{Binding ActivityList}" SeparatorVisibility="Default" RowHeight="100">
 				    <ListView.ItemTemplate>
 				      <DataTemplate>
@@ -29,6 +36,6 @@
 				  </ListView>
 				  <Button Text="Add New Activity" Command="{Binding AddNewActivityCommand}" />
 			</StackLayout>
-		</StackLayout>
+		</RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>

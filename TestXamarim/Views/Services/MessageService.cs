@@ -8,7 +8,12 @@ namespace TestXamarim.Views.Services
 
 		public async System.Threading.Tasks.Task ShowAsync (string message)
 		{
-			await TestXamarim.App.Current.MainPage.DisplayAlert ("Mvvm", message, "ok");
+			await TestXamarim.App.Current.MainPage.DisplayAlert ("Bravi Timeline", message, "ok");
+		}
+
+		public void Show (string message)
+		{
+			TestXamarim.App.Current.MainPage.DisplayAlert ("Bravi Timeline", message, "ok");
 		}
 
 		#endregion

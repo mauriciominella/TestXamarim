@@ -5,7 +5,8 @@ namespace TestXamarim.ViewModels.Services
 {
 	public interface IMessageService
 	{
-		Task ShowAsync (string messagE);
+		Task ShowAsync (string message);
+		void Show (string message);
 	}
 }
 

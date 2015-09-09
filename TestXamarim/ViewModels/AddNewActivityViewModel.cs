@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using TestXamarim.Business;
 using System.Collections.Generic;
 using TestXamarim.Repository;
+using System.Threading.Tasks;
 
 namespace TestXamarim.ViewModels
 {
@@ -75,6 +76,17 @@ namespace TestXamarim.ViewModels
 			}
 		}
 
+		bool isLoading;
+		public bool IsLoading {
+			get {
+				return isLoading;
+			}
+			set {
+				isLoading = value;
+				Notify ("IsLoading");
+			}
+		}
+
 		private readonly ActivityRepository _activityRepository;
 
 		public AddNewActivityViewModel ()
@@ -94,18 +106,29 @@ namespace TestXamarim.ViewModels
 
 		}
 
-		private void Save()
+
+
+		private async Task SaveAsync(){
+			await Task.Run (() => this._activityRepository.Add (this.GetActivityEntity ()));
+		}
+
+
+		private async void Save()
 		{
 			try {
-				this._activityRepository.Add (this.GetActivityEntity ());
 
-				this.ClearFields();
+				this.IsLoading = true;
+
+				await SaveAsync();
 
 				_messageService.ShowAsync ("New activity created!");
-
+				this.ClearFields();
 				this._navigationService.NavigateToActivityList();
+				this.IsLoading = false;
+
 			} catch (Exception ex) {
-				_messageService.ShowAsync (ex.Message);
+				this.IsLoading = false;
+				_messageService.Show (ex.Message);
 			}
 		}
 
@@ -116,6 +139,7 @@ namespace TestXamarim.ViewModels
 		}
 
 		private Activity GetActivityEntity(){
+
 			Activity newActivity = new Activity ();
 			newActivity.Date = this.Date;
 			newActivity.Description = this.Description;

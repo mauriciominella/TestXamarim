@@ -27,7 +27,7 @@ namespace TestXamarim.Repository
 		public void Post(T newEntity){
 
 			var client = new RestClient(ServiceBaseUrl);
-			var request = new RestRequest(typeof(Activity).Name.ToLower(), Method.POST);
+			var request = new RestRequest(typeof(T).Name.ToLower(), Method.POST);
 			request.JsonSerializer = new LowerCaseJsonSerializer ();
 			request.RequestFormat = DataFormat.Json;
 			request.AddJsonBody(newEntity);
@@ -41,7 +41,7 @@ namespace TestXamarim.Repository
 		public void Delete(string id){
 
 			var client = new RestClient(ServiceBaseUrl);
-			var request = new RestRequest(typeof(Activity).Name.ToLower() + "/" + id, Method.DELETE);
+			var request = new RestRequest(typeof(T).Name.ToLower() + "/" + id, Method.DELETE);
 
 			var response = client.Execute(request);
 
@@ -79,6 +79,8 @@ namespace TestXamarim.Repository
 
 			
 		//}
+
+
 
 		public IList<T> GetAll(){
 

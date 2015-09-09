@@ -5,6 +5,7 @@ using TestXamarim.Repository;
 using System.Collections.Generic;
 using System.Windows.Input;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace TestXamarim.ViewModels
 {
@@ -68,8 +69,9 @@ namespace TestXamarim.ViewModels
 
 		public ActivityListViewModel ()
 		{
-			//listItemTapCommand = new Command (OnTapped);
-			RefreshCommand = new Command (LoadActivites);
+			this.IsLoading = true;
+
+			//RefreshCommand = new Command (LoadActivites);
 			AddNewActivityCommand = new Command(NavigateToAddNewActivity);
 			DeleteCommand = new Command<Activity> (a => Delete(a));
 
@@ -80,23 +82,43 @@ namespace TestXamarim.ViewModels
 		}
 
 
+		bool isLoading;
+		public bool IsLoading {
+			get {
+				return isLoading;
+			}
+			set {
+				isLoading = value;
+				Notify ("IsLoading");
+			}
+		}
+
 		#region Private Methods
 
-		void LoadActivites ()
+		private async void LoadActivites ()
 		{
-			IList<Activity> activities = _activityRepository.GetAll ().OrderByDescending(d => d.Date).ToList();
-			this.ActivityList = new ObservableCollection<Activity> (activities);
+			this.IsLoading = true;
+
+			var result = await _activityRepository.GetAllAsync();
+			this.ActivityList = new ObservableCollection<Activity> (result.OrderByDescending(d => d.Date).ToList());
+
+			this.IsLoading = false;
 		}
 
 		void NavigateToAddNewActivity(){
 			this._navigationService.NavigateToAddNewActivity ();
 		}
 
-		void Delete(Activity activityToDelete){
+		private async void Delete(Activity activityToDelete){
 			try {
-				
-				this._activityRepository.Delete (activityToDelete);
+				this.IsLoading = true;
+
+				await this._activityRepository.DeleteAsync (activityToDelete);
+
+				this.IsLoading = false;
+
 				_messageService.ShowAsync ("Activity deleted!");
+
 				this.LoadActivites();
 
 			} catch (Exception ex) {
