@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TestXamarim.Views.ActivityListView" Title="Bravi Timeline">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TestXamarim.Views.ActivityListView" x:Name="page" Title="Bravi Timeline">
 	<ContentPage.Content>
 		<RelativeLayout x:Name="RootLayout">
 			<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" 
@@ -16,7 +16,7 @@
 				      	<ViewCell>
 
 				      		<ViewCell.ContextActions>
-				      			<MenuItem Text="Delete" Clicked="OnDelete" CommandParameter="{Binding .}" />
+				      			<MenuItem Text="Delete" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference RootLayout}}" CommandParameter="{Binding .}" />
 				      		</ViewCell.ContextActions>
 
 							<StackLayout Orientation="Vertical" Padding="10">

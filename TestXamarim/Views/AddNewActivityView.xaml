@@ -19,7 +19,7 @@
 
 			<StackLayout Padding="0">
 				<Label Text="Activity"></Label>
-				<Editor Text="{Binding Description}" Keyboard="Text"></Editor>
+				<Editor Text="{Binding Description}" Keyboard="Text" HeightRequest="100"></Editor>
 			</StackLayout>
 
 			<StackLayout Padding="0">
