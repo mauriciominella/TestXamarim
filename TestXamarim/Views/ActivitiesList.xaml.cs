@@ -13,12 +13,6 @@ namespace TestXamarim.Views
 			InitializeComponent ();
 			this.BindingContext = new TestXamarim.ViewModels.ActivityListViewModel ();
 		}
-
-		public void OnDelete (object sender, EventArgs e) {
-			var mi = ((MenuItem)sender);
-			ActivityListViewModel vm = BindingContext as ActivityListViewModel;
-			vm.DeleteCommand.Execute (mi.CommandParameter);
-		}
 	}
 }
 

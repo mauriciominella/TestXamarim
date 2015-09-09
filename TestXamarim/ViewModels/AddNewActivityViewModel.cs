@@ -110,7 +110,6 @@ namespace TestXamarim.ViewModels
 
 		private async Task SaveAsync(){
 			await _activityRepository.AddAsync (this.GetActivityEntity ());
-			//await Task.Run (() => this._activityRepository.Add (this.GetActivityEntity ()));
 		}
 
 
