@@ -48,6 +48,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Business\EnumActivityType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repository\LowerCaseJsonSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SwipeListView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -58,6 +59,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Business\Authentication\" />
     <Folder Include="$(MSBuildThisFileDirectory)Repository\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Converters\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginView.xaml">

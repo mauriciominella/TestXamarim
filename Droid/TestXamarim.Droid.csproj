@@ -74,11 +74,16 @@
     <Reference Include="OkHttp">
       <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\OkHttp.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Auth.Android">
+      <HintPath>..\packages\Xamarin.Auth.NoXamStore.1.0.0\lib\MonoAndroid\Xamarin.Auth.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Listeners\CustomGestureListener.cs" />
+    <Compile Include="Renderers\CustomListViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -89,12 +94,16 @@
   <ItemGroup>
     <Folder Include="Resources\layout\" />
     <Folder Include="Resources\values\" />
+    <Folder Include="Renderers\" />
+    <Folder Include="Listeners\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <Import Project="..\TestXamarim\TestXamarim.projitems" Label="Shared" Condition="Exists('..\TestXamarim\TestXamarim.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

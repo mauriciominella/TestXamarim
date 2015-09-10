@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TestXamarim.Views.ActivityListView" x:Name="page" Title="Bravi Timeline">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TestXamarim.Views.ActivityListView" x:Name="page" Title="Bravi Timeline"
+	xmlns:controls="clr-namespace:TestXamarim.Controls;assembly=TestXamarim.Droid"
+>
 	<ContentPage.Content>
 		<RelativeLayout x:Name="RootLayout">
 			<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" 
@@ -10,7 +12,7 @@
 		    	RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=1}"
 				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=1}"	
 			>
-				<ListView x:Name="myListView" ItemsSource="{Binding ActivityList}" SeparatorVisibility="Default" RowHeight="100">
+				<controls:SwipeListView x:Name="myListView" ItemsSource="{Binding ActivityList}" SeparatorVisibility="Default" RowHeight="100">
 				    <ListView.ItemTemplate>
 				      <DataTemplate>
 				      	<ViewCell>
@@ -33,7 +35,7 @@
 				      	</ViewCell>
 				      </DataTemplate>
 				    </ListView.ItemTemplate>
-				  </ListView>
+				  </controls:SwipeListView>
 				  <Button Text="Add New Activity" Command="{Binding AddNewActivityCommand}" />
 			</StackLayout>
 		</RelativeLayout>
