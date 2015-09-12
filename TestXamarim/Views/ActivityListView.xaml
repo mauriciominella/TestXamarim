@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TestXamarim.Views.ActivityListView" x:Name="page" Title="Bravi Timeline"
 	xmlns:controls="clr-namespace:TestXamarim.Controls;assembly=TestXamarim.Droid"
+	xmlns:converters="clr-namespace:TestXamarim.Views.Converters;assembly=TestXamarim.Droid"
 >
+	<ContentPage.Resources>
+ 		<ResourceDictionary>
+            <converters:ActivityTypeToColorConverter x:Key="typeColorConverter"></converters:ActivityTypeToColorConverter>
+        </ResourceDictionary>
+	</ContentPage.Resources>
 	<ContentPage.Content>
 		<AbsoluteLayout>
 			<RelativeLayout x:Name="RootLayout">	
@@ -20,7 +26,7 @@
 							      		<StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="0">
 
 							      			<RelativeLayout  MinimumWidthRequest="75">
-												<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" BackgroundColor="#9DD898" Spacing="0"
+												<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" BackgroundColor="{Binding Type, Converter={StaticResource typeColorConverter}}" Spacing="0"
 													RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-10}"
 													RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=-10}">
 														<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">

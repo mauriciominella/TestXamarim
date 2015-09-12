@@ -51,6 +51,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SwipeListView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FloatingActionButtonSize.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FloatingActionButtonView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Converters\ActivityTypeToColorConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
