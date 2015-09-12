@@ -49,6 +49,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Business\EnumActivityType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repository\LowerCaseJsonSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SwipeListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FloatingActionButtonSize.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FloatingActionButtonView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

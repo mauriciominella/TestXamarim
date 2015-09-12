@@ -19,7 +19,7 @@
 
 			<StackLayout Padding="0">
 				<Label Text="Activity"></Label>
-				<Editor Text="{Binding Description}" Keyboard="Text" HeightRequest="100"></Editor>
+				<Editor Text="{Binding Description}" Keyboard="Text" HeightRequest="75"></Editor>
 			</StackLayout>
 
 			<StackLayout Padding="0">
@@ -30,7 +30,7 @@
 
 			<StackLayout Padding="0">
 					<Button Text="Save" Command="{Binding SaveCommand}" BackgroundColor="#5BBB5B" TextColor="White"></Button>
-					<Button Text="Cancel"  Command="{Binding CancelCommand}" BackgroundColor="#F5F5F5" TextColor="Black"></Button>
+					<Button Text="Cancel"  Command="{Binding CancelCommand}"></Button>
 			</StackLayout>
 
 

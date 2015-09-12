@@ -3,41 +3,58 @@
 	xmlns:controls="clr-namespace:TestXamarim.Controls;assembly=TestXamarim.Droid"
 >
 	<ContentPage.Content>
-		<RelativeLayout x:Name="RootLayout">
-			<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" 
-			    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=0.45}"
-				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=0.2}"
-			/>		
-			<StackLayout
-		    	RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=1}"
-				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=1}"	
+		<AbsoluteLayout>
+			<RelativeLayout x:Name="RootLayout"
+
 			>
-				<controls:SwipeListView x:Name="myListView" ItemsSource="{Binding ActivityList}" SeparatorVisibility="Default" RowHeight="100">
-				    <ListView.ItemTemplate>
-				      <DataTemplate>
-				      	<ViewCell>
+						<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" 
+						    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=0.45}"
+							RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=0.2}"
+						/>		
 
-				      		<ViewCell.ContextActions>
-				      			<MenuItem Text="Delete" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference RootLayout}}" CommandParameter="{Binding .}" />
-				      		</ViewCell.ContextActions>
+						<StackLayout
+					    	RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=1}"
+							RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=1}"	
+						>
+							<controls:SwipeListView x:Name="myListView" ItemsSource="{Binding ActivityList}" SeparatorVisibility="Default" RowHeight="100">
+							    <ListView.ItemTemplate>
+							      <DataTemplate>
+							      	<ViewCell>
 
-							<StackLayout Orientation="Vertical" Padding="10">
-								<StackLayout>
-									<StackLayout Orientation="Horizontal" HorizontalOptions="Fill" BackgroundColor="#5A595B" Padding="5">
-										<Label Text="From Mauricio Minella" HorizontalOptions="Start" TextColor="White" FontSize="13" />
-										<Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"  HorizontalOptions="End" TextColor="White" FontSize="13" />
-									</StackLayout>
-									<Label Text="{Binding Description}" />
-								</StackLayout>
-			
-							</StackLayout>
+							      		<ViewCell.ContextActions>
+							      			<MenuItem Text="Delete" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference RootLayout}}" CommandParameter="{Binding .}" />
+							      		</ViewCell.ContextActions>
 
-				      	</ViewCell>
-				      </DataTemplate>
-				    </ListView.ItemTemplate>
-				  </controls:SwipeListView>
-				  <Button Text="Add New Activity" Command="{Binding AddNewActivityCommand}" />
-			</StackLayout>
-		</RelativeLayout>
+										<StackLayout Orientation="Vertical" Padding="10">
+											<StackLayout>
+												<StackLayout Orientation="Horizontal" HorizontalOptions="Fill" BackgroundColor="#5A595B" Padding="5">
+													<Label Text="From Mauricio Minella" HorizontalOptions="Start" TextColor="White" FontSize="13" />
+													<Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"  HorizontalOptions="End" TextColor="White" FontSize="13" />
+												</StackLayout>
+												<Label Text="{Binding Description}" />
+											</StackLayout>
+						
+										</StackLayout>
+
+							      	</ViewCell>
+							      </DataTemplate>
+							    </ListView.ItemTemplate>
+							  </controls:SwipeListView>
+							  <!--<Button Text="Add New Activity" Command="{Binding AddNewActivityCommand}" />-->
+						</StackLayout>
+					</RelativeLayout>
+
+						<controls:FloatingActionButtonView 
+							x:Name="fab" ImageName="ic_add.png"
+							ColorNormal="#3498DB"
+							ColorPressed="#C0DCF7"
+							ColorRipple="#2E7BE5"
+							Command="{Binding AddNewActivityCommand}"
+				AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+	             AbsoluteLayout.LayoutFlags="PositionProportional"
+						>
+						</controls:FloatingActionButtonView>
+		</AbsoluteLayout>
+
 	</ContentPage.Content>
 </ContentPage>
