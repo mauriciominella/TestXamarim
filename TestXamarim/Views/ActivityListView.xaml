@@ -26,9 +26,18 @@
 							      		<StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="0">
 
 							      			<RelativeLayout  MinimumWidthRequest="75">
-												<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" BackgroundColor="{Binding Type, Converter={StaticResource typeColorConverter}}" Spacing="0"
+
+							      	
+												<BoxView x:Name="VerticalLineBoxView" BackgroundColor="#C1C1C1" WidthRequest="1" HeightRequest="100" VerticalOptions="Center"
+							      					RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=DataStackLayout, Property=Width, Factor=0.5}"
+													RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=1}"
+							      				  />
+							      		
+												<StackLayout x:Name="DataStackLayout" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" BackgroundColor="{Binding Type, Converter={StaticResource typeColorConverter}}" Spacing="0"
 													RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-10}"
 													RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=-10}">
+
+
 														<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
 															<Label Text="{Binding Date, StringFormat='{0:dd}'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White" />
 							      							<Label Text="{Binding Date, StringFormat='{0:MMM}'}" FontSize="16"  FontAttributes="Bold" TextColor="White" />		
