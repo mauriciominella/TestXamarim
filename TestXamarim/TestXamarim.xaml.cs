@@ -17,6 +17,7 @@ namespace TestXamarim
 
 			// The root page of your application
 			MainPage = new NavigationPage(new TestXamarim.Views.ActivityListView());
+
 		}
 
 		protected override void OnStart ()

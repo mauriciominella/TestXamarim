@@ -4,7 +4,7 @@
     <style name="MyCustomTheme" parent="android:Theme.Material.Light">
         <!-- Override the app bar color -->
         <item name="android:colorPrimary">@color/my_blue</item>
-        <item name="android:colorPrimaryDark">@color/my_dark_blue</item>
+        <item name="android:colorPrimaryDark">@color/StatusBarColor</item>
         <!-- Override the color of UI controls -->
         <item name="android:colorAccent">@color/my_purple</item>
         <item name="android:textColorPrimary">@color/my_white</item>
@@ -14,7 +14,7 @@
 
     <style name="AppStyle.Light" parent="android:style/Theme.Material.Light.DarkActionBar">
     <item name="android:colorPrimary">@color/my_blue</item>
-       <item name="android:colorPrimaryDark">@color/my_dark_blue</item>
+       <item name="android:statusBarColor">@color/StatusBarColor</item>
     <item name="android:colorPressedHighlight">@color/ListViewSelected</item>
     <item name="android:colorLongPressedHighlight">@color/ListViewHighlighted</item>
     <item name="android:colorFocusedHighlight">@color/ListViewSelected</item>
