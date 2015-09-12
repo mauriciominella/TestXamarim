@@ -4,19 +4,11 @@
 >
 	<ContentPage.Content>
 		<AbsoluteLayout>
-			<RelativeLayout x:Name="RootLayout"
-
-			>
-						<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" 
-						    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=0.45}"
-							RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=0.2}"
-						/>		
-
+			<RelativeLayout x:Name="RootLayout">	
 						<StackLayout
 					    	RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=1}"
-							RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=1}"	
-						>
-							<controls:SwipeListView x:Name="myListView" ItemsSource="{Binding ActivityList}" SeparatorVisibility="Default" RowHeight="100">
+							RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=1}"	>
+							<controls:SwipeListView x:Name="myListView" ItemsSource="{Binding ActivityList}" SeparatorVisibility="Default" RowHeight="75">
 							    <ListView.ItemTemplate>
 							      <DataTemplate>
 							      	<ViewCell>
@@ -25,16 +17,40 @@
 							      			<MenuItem Text="Delete" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference RootLayout}}" CommandParameter="{Binding .}" />
 							      		</ViewCell.ContextActions>
 
-										<StackLayout Orientation="Vertical" Padding="10">
-											<StackLayout>
-												<StackLayout Orientation="Horizontal" HorizontalOptions="Fill" BackgroundColor="#5A595B" Padding="5">
-													<Label Text="From Mauricio Minella" HorizontalOptions="Start" TextColor="White" FontSize="13" />
-													<Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"  HorizontalOptions="End" TextColor="White" FontSize="13" />
+							      		<StackLayout Orientation="Horizontal" BackgroundColor="White" Spacing="0">
+
+							      			<RelativeLayout  MinimumWidthRequest="75">
+												<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" BackgroundColor="#9DD898" Spacing="0"
+													RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-10}"
+													RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=-10}">
+														<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
+															<Label Text="{Binding Date, StringFormat='{0:dd}'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White" />
+							      							<Label Text="{Binding Date, StringFormat='{0:MMM}'}" FontSize="16"  FontAttributes="Bold" TextColor="White" />		
+														</StackLayout>
+							      				
+							      				</StackLayout>
+							      			</RelativeLayout>
+							
+
+											<RelativeLayout BackgroundColor="#BABABA">
+												<StackLayout BackgroundColor="White" Padding="0" Spacing="0"
+													RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=0}"
+													RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=0}">
+
+													<StackLayout Orientation="Horizontal" Spacing="0">
+														<Label Text="from " FontSize="12" TextColor="#AAAAAF" FontAttributes="Italic" />
+														<Label Text="Mauricio Minella" HorizontalOptions="Start" FontSize="12" TextColor="#AAAAAF" FontAttributes="Italic, Bold" />
+													</StackLayout>
+
+													<StackLayout Orientation="Vertical" Spacing="0">
+														<Label Text="{Binding Description}" />
+													</StackLayout>
+										
+
 												</StackLayout>
-												<Label Text="{Binding Description}" />
-											</StackLayout>
-						
-										</StackLayout>
+											</RelativeLayout>
+
+							      		</StackLayout>
 
 							      	</ViewCell>
 							      </DataTemplate>
@@ -42,6 +58,11 @@
 							  </controls:SwipeListView>
 							  <!--<Button Text="Add New Activity" Command="{Binding AddNewActivityCommand}" />-->
 						</StackLayout>
+
+						<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"  Color="#3498DB"
+						    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=0.45}"
+							RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=0.2}"
+						/>
 					</RelativeLayout>
 
 						<controls:FloatingActionButtonView 
