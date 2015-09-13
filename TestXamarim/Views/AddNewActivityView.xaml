@@ -3,7 +3,7 @@
 	<ContentPage.Content>
 	<RelativeLayout x:Name="RootLayout" HorizontalOptions="FillAndExpand">
 		
-		<StackLayout Padding="20"
+		<StackLayout Padding="20" BackgroundColor="White"
 		    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Width, Factor=1}"
 			RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=RootLayout, Property=Height, Factor=1}"	>
 			<StackLayout Padding="0">
